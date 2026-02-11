@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, Pressable, Image } from "react-native";
+import { View, Text, StyleSheet, TextInput, Pressable, Image, Alert } from "react-native";
 import { useState } from "react";
 
 export default function SubscribeScreen () {
@@ -25,11 +25,13 @@ export default function SubscribeScreen () {
 
       <Pressable
         style={styles.button}
-        onPress={() => { }}
+        onPress={() => Alert.alert('Subscription Successful!', 'Thank you for joining Little Lemon’s newsletter.', [
+          { text: 'OK', onPress: () => console.log('OK Pressed') },
+        ])}
       >
         <Text style={styles.buttonText}>Subscribe</Text>
       </Pressable>
-    </View>
+    </View >
   );
 }
 
