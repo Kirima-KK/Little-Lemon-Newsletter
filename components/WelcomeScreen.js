@@ -15,7 +15,7 @@ export default function WelcomeScreen ({ navigation }) {
 
       <Pressable
         style={styles.button}
-        onPress={() => { }}
+        onPress={() => navigation.navigate("Subscribe")}
       >
         <Text style={styles.buttonText}>Newsletter</Text>
       </Pressable>
@@ -38,18 +38,17 @@ const styles = StyleSheet.create({
     color: "#485d57",
     fontSize: 24,
     textAlign: "center",
-    fontFamily: "Limelight_400Regular",
   },
   button: {
     backgroundColor: "#485d57",
     width: "80%",
     padding: 24,
-    borderRadius: 12
+    borderRadius: 12,
   },
   buttonText: {
     color: "#EDEFEE",
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 24,
     textAlign: "center",
+    fontFamily: "Limelight-Regular",
   }
 });
