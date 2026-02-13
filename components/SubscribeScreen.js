@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, TextInput, Pressable, Image, Alert } from "react-native";
 import { useState } from "react";
 
+import { validateEmail } from "../utils/EmailValidation";
+
 export default function SubscribeScreen () {
   const [email, setEmail] = useState("");
 
@@ -19,13 +21,17 @@ export default function SubscribeScreen () {
       <TextInput
         style={styles.input}
         value={email}
-        onChangeText={() => setEmail()}
+        onChangeText={setEmail}
         placeholder="Enter your email..."
       />
 
       <Pressable
-        style={styles.button}
-        onPress={() => Alert.alert('Subscription Successful!', 'Thank you for joining Little Lemon’s newsletter.', [
+        style={[
+          styles.button,
+          validateEmail(email) ? styles.button : styles.disableButton,
+        ]}
+        disabled={!validateEmail(email)}
+        onPress={() => Alert.alert('Welcome to Little Lemon 🍋', 'Thanks for subscribing! \nWe can’t wait to share seasonal specials and exclusive recipes with you.', [
           { text: 'OK', onPress: () => console.log('OK Pressed') },
         ])}
       >
@@ -41,7 +47,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 24,
-    padding: 24,
+    padding: 32,
+    backgroundColor: "#F4E8C2",
   },
   image: {
     width: 240,
@@ -51,29 +58,34 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "Limelight-Regular",
     fontSize: 32,
-    color: "#485d57",
+    color: "#637454",
     textAlign: "center",
   },
   description: {
-    fontSize: 20,
-    color: "#485d57",
+    fontSize: 24,
+    color: "#637454",
     textAlign: "center",
+    fontFamily:"Karla-Regular",
+    lineHeight: 36,
   },
   input: {
-    borderWidth: 1,
-    borderColor: "#485d57",
+    borderWidth: 1.5,
+    borderColor: "#637454",
     borderRadius: 10,
     padding: 12,
-    color: "#485d57",
+    color: "#637454",
     fontSize: 18,
     marginVertical: 16,
     width: "100%",
   },
   button: {
-    backgroundColor: "#485d57",
+    backgroundColor: "#637454",
     padding: 20,
     borderRadius: 10,
     width: "64%",
+  },
+  disableButton: {
+    backgroundColor: "#CFCECC",
   },
   buttonText: {
     fontFamily: "Limelight-Regular",

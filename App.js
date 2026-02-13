@@ -12,6 +12,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App () {
    const [loaded, error] = useFonts({
     'Limelight-Regular': require('./assets/fonts/LimelightRegular.ttf'),
+    'Karla-Regular': require('./assets/fonts/KarlaRegular.ttf'),
   });
 
   useEffect(() => {

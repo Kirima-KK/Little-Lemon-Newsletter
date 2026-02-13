@@ -28,7 +28,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 140,
+    paddingVertical: 140,
+    paddingHorizontal: 24,
+    backgroundColor: "#F4E8C2",
   },
   logo: {
     width: 360,
@@ -36,11 +38,13 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#485d57",
-    fontSize: 24,
+    fontSize: 26,
     textAlign: "center",
+    fontFamily: "Karla-Regular",
+    lineHeight: 40,
   },
   button: {
-    backgroundColor: "#485d57",
+    backgroundColor: "#637454",
     width: "80%",
     padding: 24,
     borderRadius: 12,
