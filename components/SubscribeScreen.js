@@ -12,7 +12,6 @@ import {
   StatusBar
 } from "react-native";
 import { useState } from "react";
-import { useHeaderHeight } from "@react-navigation/elements";
 
 import { validateEmail } from "../utils/EmailValidation";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -20,13 +19,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function SubscribeScreen () {
   const [email, setEmail] = useState("");
-  const headerHeight = useHeaderHeight();
 
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "position"}
-        // keyboardVerticalOffset={headerHeight}
       >
         <ScrollView
           contentContainerStyle={styles.innerContainer}
