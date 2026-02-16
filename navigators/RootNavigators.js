@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import WelcomeScreen from "../components/WelcomeScreen";
 import SubscribeScreen from "../components/SubscribeScreen";
-import { StyleSheet } from "react-native";
+import { Image, Pressable, StyleSheet } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -10,17 +10,21 @@ export default function RootNavigator () {
     <>
       <Stack.Navigator
         initialRouteName="Welcome"
-        screenOptions={{
+        screenOptions={({ navigation }) => ({
           headerStyle: styles.header,
           headerTitleStyle: styles.headerText,
-          headerTitleAlign: "center",
-          headerBackIcon: () => (
-            <Image
-              source={require('../assets/my-custom-back-icon.png')}
-              style={{ width: 24, height: 24 }}
-            />
+          headerLeft: () => (
+            <Pressable onPress={() => navigation.goBack()}>
+              <Image
+                source={require("../assets/img/back-icon.png")}
+                style={styles.backButton}
+                resizeMode="contain"
+              />
+            </Pressable>
           ),
-        }}
+          headerTintColor: "#F4E8C2",
+          headerTitleAlign: "center",
+        })}
       >
         <Stack.Screen
           name="Welcome"
@@ -36,7 +40,7 @@ export default function RootNavigator () {
             title: "Newsletter",
           }}
         />
-      </Stack.Navigator>
+      </Stack.Navigator >
     </>
   );
 }
@@ -50,5 +54,10 @@ const styles = StyleSheet.create({
     fontFamily: "Limelight-Regular",
     textAlign: "center",
     color: "#F4E8C2",
+  },
+  backButton: {
+    tintColor: "#F4E8C2",
+    width: 28,
+    height: 28,
   }
 });
