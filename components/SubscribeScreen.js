@@ -1,59 +1,82 @@
-import { View, Text, StyleSheet, TextInput, Pressable, Image, Alert } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Pressable,
+  Image,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StatusBar
+} from "react-native";
 import { useState } from "react";
+import { useHeaderHeight } from "@react-navigation/elements";
 
 import { validateEmail } from "../utils/EmailValidation";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 export default function SubscribeScreen () {
   const [email, setEmail] = useState("");
+  const headerHeight = useHeaderHeight();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.innerContainer}>
-        <Image
-          source={require('../assets/img/little-lemon-logo-grey.png')}
-          style={styles.image}
-          resizeMode="contain"
-          accessible={true}
-          accessibilityLabel="Little Lemon Logo"
-        />
-        <Text style={styles.title}>Stay in the Loop!</Text>
-        <Text style={styles.description}>Subscribe to our newsletter and be the first to receive exclusive recipes, seasonal specials, and special offers from Little Lemon.</Text>
-
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          placeholder="Enter your email..."
-        />
-
-        <Pressable
-          style={({ pressed }) => [
-            pressed ? styles.buttonPressed : validateEmail(email) ? styles.button : styles.disableButton,
-          ]}
-          disabled={!validateEmail(email)}
-          onPress={() => Alert.alert('Welcome to Little Lemon 🍋', 'Thanks for subscribing! \nWe can’t wait to share seasonal specials and exclusive recipes with you.', [
-            { text: 'OK', onPress: () => console.log('OK Pressed') },
-          ])}
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "position"}
+        // keyboardVerticalOffset={headerHeight}
+      >
+        <ScrollView
+          contentContainerStyle={styles.innerContainer}
         >
-          <Text style={styles.buttonText}>Subscribe</Text>
-        </Pressable>
-      </View>
-    </View >
+          <Image
+            source={require('../assets/img/little-lemon-logo-grey.png')}
+            style={styles.image}
+            resizeMode="contain"
+            accessible={true}
+            accessibilityLabel="Little Lemon Logo"
+          />
+          <Text style={styles.title}>Stay in the Loop!</Text>
+          <Text style={styles.description}>Subscribe to our newsletter and be the first to receive exclusive recipes, seasonal specials, and special offers from Little Lemon.</Text>
+
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Enter your email..."
+          />
+
+          <Pressable
+            style={({ pressed }) => [
+              pressed ? styles.buttonPressed : validateEmail(email) ? styles.button : styles.disableButton,
+            ]}
+            disabled={!validateEmail(email)}
+            onPress={() => Alert.alert('Welcome to Little Lemon 🍋', 'Thanks for subscribing! \nWe can’t wait to share seasonal specials and exclusive recipes with you.', [
+              { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ])}
+          >
+            <Text style={styles.buttonText}>Subscribe</Text>
+          </Pressable>
+        </ScrollView >
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 20,
     backgroundColor: "#F4E8C2",
   },
   innerContainer: {
-    flex: 1,
+    flexGrow: 1,
+    padding: 24,
     justifyContent: "center",
     alignItems: "center",
     gap: 24,
-    padding: 24,
     backgroundColor: "#FBF7E9",
     borderWidth: 4,
     borderStyle: "dashed",

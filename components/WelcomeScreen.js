@@ -1,8 +1,9 @@
 import { Image, StyleSheet, View, Text, Pressable } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function WelcomeScreen ({ navigation }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.innerContainer}>
         <Image
           style={styles.logo}
@@ -24,7 +25,7 @@ export default function WelcomeScreen ({ navigation }) {
         </Pressable>
 
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
