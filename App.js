@@ -1,16 +1,14 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 
 import RootNavigator from './navigators/RootNavigators';
-import WelcomeScreen from "./components/WelcomeScreen";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App () {
-   const [loaded, error] = useFonts({
+  const [loaded, error] = useFonts({
     'Limelight-Regular': require('./assets/fonts/LimelightRegular.ttf'),
     'Karla-Regular': require('./assets/fonts/KarlaRegular.ttf'),
   });
@@ -26,18 +24,8 @@ export default function App () {
   }
 
   return (
-    // <View style={styles.container}>
-    //   <WelcomeScreen />
-    // </View>
     <NavigationContainer>
       <RootNavigator />
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

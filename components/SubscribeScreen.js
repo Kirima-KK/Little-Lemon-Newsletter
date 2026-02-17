@@ -1,5 +1,4 @@
 import {
-  View,
   Text,
   StyleSheet,
   TextInput,
@@ -9,7 +8,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  StatusBar
 } from "react-native";
 import { useState } from "react";
 
@@ -116,7 +114,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     width: "80%",
-    // boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px , rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
     boxShadow: "4px 8px 0 #485d57",
   },
   buttonPressed: {
@@ -124,7 +121,6 @@ const styles = StyleSheet.create({
     width: "80%",
     padding: 20,
     borderRadius: 10,
-    // boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px inset, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px inset, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
     boxShadow: "4px 8px 0 #33423E inset",
   },
   disableButton: {
@@ -132,7 +128,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: "80%",
     backgroundColor: "darkgray",
-    // boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px inset, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px inset, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
     boxShadow: "4px 8px 0 gray inset",
   },
   buttonText: {
